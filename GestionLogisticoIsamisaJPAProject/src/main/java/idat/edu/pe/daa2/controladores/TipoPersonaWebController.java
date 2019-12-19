@@ -50,12 +50,12 @@ public class TipoPersonaWebController {
 		model.addAttribute("tipopersona", tipopersona);
 		return "/moduloAdministrativo/nuevaTipoPersona";
 	}
-	
+	 
 	
 	@RequestMapping(value = "/guardar", method = RequestMethod.POST)
 	public String crearTipoPersona(@ModelAttribute("tipopersona") TipoPersona tipopersona) {
 		servicio.crear(tipopersona);
-	    return "redirect:/moduloAdministrativo/listaGeneral";
+	    return "redirect:/tipopersona/listarTodo";
 	}
 	
 	@RequestMapping("/actualizar/{id}")
@@ -71,7 +71,7 @@ public class TipoPersonaWebController {
 	@RequestMapping("/eliminar/{id}")
 	public String eliminarTipoPersona(@PathVariable(name = "id") int id) {
 		servicio.borrarPorID(id);;
-	    return "redirect:/moduloAdministrativo/listaGeneral";       
+	    return "redirect:/tipopersona/listarTodo";       
 	}
 
 

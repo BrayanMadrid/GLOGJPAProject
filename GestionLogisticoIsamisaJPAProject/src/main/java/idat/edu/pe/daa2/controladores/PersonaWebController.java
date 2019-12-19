@@ -86,10 +86,6 @@ public class PersonaWebController {
 	    return "redirect:/persona/listarTodo";       
 	}
 	
-	@RequestMapping("/inicio")
-	public String inicio(Model model) {
-		return "/home";
-	}
 	
 	@RequestMapping ("/login")
 	public String login(Model model) {
