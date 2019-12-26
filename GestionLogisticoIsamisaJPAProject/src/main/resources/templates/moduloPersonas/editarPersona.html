@@ -15,29 +15,21 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="bienvenida.jsp">
+            <a class="navbar-brand">
        <img src="../../imagenes/Logo.png" width="30" height="30" alt="">
-      Grupo Isamisa</a>
+      Grupo Isamisa (Personas)</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="persona.jsp">Personas<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="articulo.jsp">Artículos<span class="sr-only">(current)</span></a>
-                </li>
-                </ul>
             </div>
-               <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick = "location='index.jsp'">SALIR</button>
+               <a th:href="@{/persona/listarTodo}" class="btn btn-success">REGRESAR</a>
 </nav>
 <br>
 
 	<section id="seccion1">
 	<div class="container-fluid">
-			<p align="center" style="font-size:20px"><b>Información de Persona</b></p>
+			<p align="center" style="font-size:20px"><b>Editar Persona</b></p>
 			<form th:action="@{/persona/guardar}"
 				th:object="${persona}" method="post">
 				

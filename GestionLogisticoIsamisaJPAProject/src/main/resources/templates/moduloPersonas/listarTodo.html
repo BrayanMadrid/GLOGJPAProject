@@ -51,32 +51,24 @@
 </head>
 <body>
  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" th:href="@{/persona/inicio}">
+            <a class="navbar-brand">
        <img src="../imagenes/Logo.png" width="30" height="30" alt="">
-      			Grupo Isamisa</a>
+      			Grupo Isamisa (Personas)</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                <li class="nav-item dropdown">
-        				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-         					 Personas
-       					</a>
-       				 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-         				 <a class="dropdown-item" th:href="@{/persona/listarTodo}">Listado</a>
-         				 <a class="dropdown-item" th:href="@{/persona/nuevo}">Registrar</a>
-       				 </div>
-      			</li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="articulo.jsp">Artículos<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" th:href="@{/persona/nuevo}">REGISTRAR<span class="sr-only">(current)</span></a>
                 </li>
                 </ul>
             </div>
-               <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick = "location='index.jsp'">SALIR</button>
+               <a th:href="@{/principal/inicio}" class="btn btn-success">MENÚ</a>
         </nav>
         <br>
-	<section id="seccion1">
+        <p align="center" style="font-size:20px"><b>Listado de Personas</b></p>
+	<section  style="width:95%; display:block; margin-left: auto; margin-right: auto" id="seccion1">
 		<div>
 			<table style="width:100%" id="ejemplo1"
 				class="table table-striped table-bordered dt-responsive nowrap">
