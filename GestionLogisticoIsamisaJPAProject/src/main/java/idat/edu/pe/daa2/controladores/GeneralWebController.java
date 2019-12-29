@@ -13,5 +13,10 @@ public class GeneralWebController {
 		return "/home";
 	}
 	
+	@RequestMapping("/general")
+	public String General(Model model) {
+		return "/moduloAdministrativo/listaGeneral";
+	}
+	
 
 }
