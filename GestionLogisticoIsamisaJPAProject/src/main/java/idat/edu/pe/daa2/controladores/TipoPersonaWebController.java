@@ -30,7 +30,7 @@ public class TipoPersonaWebController {
 	private TipoPersonaJRDServicio servicioJRD;
 	
 	@Autowired
-	private TipoPersonaEMPServicio servicioEMP;
+	private TipoPersonaEMPServicio servicioEMP; 
 	
 	
 	@RequestMapping("/listarTodo")
