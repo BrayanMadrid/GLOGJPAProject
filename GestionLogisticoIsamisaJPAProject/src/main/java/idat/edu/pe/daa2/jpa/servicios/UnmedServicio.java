@@ -31,7 +31,6 @@ public class UnmedServicio {
 	public Unmed actualizar(Unmed unmedActualizar) {
 		Unmed unmedActual = repositorio.findById(unmedActualizar.getID_UNMED()).get();
 		unmedActual.setDESC_UNMED(unmedActualizar.getDESC_UNMED());
-		unmedActual.setID_UNMED(unmedActualizar.getID_UNMED());
 		Unmed unmedActualizado = repositorio.save(unmedActual);
 		return unmedActualizado;
 	}
