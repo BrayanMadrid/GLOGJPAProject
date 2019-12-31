@@ -95,5 +95,10 @@ public boolean equals(Object object) {
     return true;
 }
 
+@Override
+public String toString() {
+    return DESC_SUB_FAM_ITEM;
+}
+
 
 }

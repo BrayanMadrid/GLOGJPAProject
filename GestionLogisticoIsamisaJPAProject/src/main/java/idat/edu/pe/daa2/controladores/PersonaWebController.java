@@ -74,11 +74,17 @@ public class PersonaWebController {
 	public ModelAndView editarPersona(@PathVariable(name = "id") int id) {
 	    ModelAndView mav = new ModelAndView("/moduloPersonas/editarPersona");
 	    Persona persona = servicio.buscarPorID(id);
+		List<Ciudad> listCiudad = servicioCiudad.buscarTodo();
+		List<TipoPersona> listTipoPersona = servicioTipoPersona.buscarTodo();
+		List<TipoPersonaJRD> listTipoPersonaJRD = servicioTipoPersonaJRD.buscarTodo();
+		List<TipoPersonaEMP> listTipoPersonaEMP = servicioTipoPersonaEMP.buscarTodo();
 	    mav.addObject("persona", persona);
-	     
+		mav.addObject("ciudades", listCiudad);
+		mav.addObject("tipopersona", listTipoPersona);
+		mav.addObject("tipopersonajrd", listTipoPersonaJRD);
+		mav.addObject("tipopersonaemp", listTipoPersonaEMP);
 	    return mav;
 	}
-	
 	
 	@RequestMapping("/eliminar/{id}")
 	public String eliminarPersona(@PathVariable(name = "id") int id) {
@@ -86,11 +92,9 @@ public class PersonaWebController {
 	    return "redirect:/persona/listarTodo";       
 	}
 	
-	
 	@RequestMapping ("/login")
 	public String login(Model model) {
 		return "/index";
 	}
 	
-
 }

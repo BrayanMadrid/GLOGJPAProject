@@ -1,10 +1,139 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="../js/jquery-3.4.1.min.js" type="text/javascript"></script>
+<link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="../css/miLogin.css" rel="stylesheet" type="text/css" />
+<link href="../css/miLayout.css" rel="stylesheet" type="text/css" />
+<link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<script src="../js/bootstrap.min.js" type="text/javascript"></script>
+<title>Crear Nueva Item</title>
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand">
+       <img src="../imagenes/Logo.png" width="30" height="30" alt="">
+      Grupo Isamisa (Item)</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            </div>
+               <a th:href="@{/item/listarTodo}" class="btn btn-success">REGRESAR</a>
+</nav>
+<br>
 
-</body>
+	<section id="seccion1">
+	<div class="container-fluid">
+			<p align="center" style="font-size:20px"><b>Registro de Item</b></p>
+			<br>
+			<form th:action="@{/item/guardar}"
+				th:object="${item}" method="post">
+				
+				<div class="container">
+  					<div class="row">
+    					<div class="col">
+      						<div class="form-group row">
+								<label for="nombre" class="col-sm-2 col-form-label">Descripción:</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="DESC_ITEM"
+								placeholder="Descripción" th:field="*{DESC_ITEM}" />
+							</div>
+							</div>
+    					</div>
+    					<div class="col">
+      						<div class="form-group row">
+      						<div class="input-group mb-3">
+								<div class="input-group-prepend">
+    								<label class="input-group-text" for="inputGroupSelect01">Und.Medida:</label>
+  								</div>
+  							<select class="custom-select" id="inputGroupSelect01" th:field="*{ID_UNMED}">
+    							<option th:each="unmed:${unmed}"
+								th:value="${unmed.ID_UNMED}"
+								th:text="${unmed.DESC_UNMED}"
+								/>
+  							</select>
+  							</div>
+						</div>
+    					</div>
+  					</div>
+  					<div class="row">
+    					<div class="col">
+      						<div class="form-group row">
+								<label for="clasificacion" class="col-sm-2 col-form-label">Precio:</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="PREC_ITEM"
+									placeholder="Precio" th:field="*{PREC_ITEM}" />
+							</div>
+						</div>
+    				</div>
+    					<div class="col">
+      						<div class="form-group row">
+      						<div class="input-group mb-3">
+								<div class="input-group-prepend">
+    								<label class="input-group-text" for="inputGroupSelect01">Clase:</label>
+  								</div>
+  							<select class="custom-select" id="inputGroupSelect01" th:field="*{ID_CLASE}">
+    							<option th:each="clase:${clase}"
+								th:value="${clase.ID_CLASE}"
+								th:text="${clase.DESC_CLASE}"
+								/>
+  							</select>
+  							</div>
+							</div>	
+    					</div>
+  					</div>
+  					<div class="row">
+    					<div class="col">
+      						<div class="input-group mb-3">
+					<div class="input-group-prepend">
+    								<label class="input-group-text" for="inputGroupSelect01">Validación:</label>
+  								</div>
+  							<select class="custom-select" id="inputGroupSelect01" th:field="*{COD_VAL}">
+    							<option th:each="validacion:${validacion}"
+								th:value="${validacion.COD_VAL}"
+								th:text="${validacion.DESC_VAL}"
+								/>
+  							</select>
+  							</div>
+    					</div>
+    					<div class="col">
+      						<div class="input-group mb-3">
+					<div class="input-group-prepend">
+    								<label class="input-group-text" for="inputGroupSelect01">Sub. Familia:</label>
+  								</div>
+  							<select class="custom-select" id="inputGroupSelect01" th:field="*{COD_SUB_FAM_ITEM}">
+    							<option th:each="subfamiliaitem:${subfamiliaitem}"
+								th:value="${subfamiliaitem.COD_SUB_FAM_ITEM}"
+								th:text="${subfamiliaitem.DESC_SUB_FAM_ITEM}"
+								/>
+  							</select>
+  							</div>
+    					</div>
+  					</div>
+  					<div class="row">
+    					<div class="col">
+      						<div class="form-group row">
+								<label for="sinopsis" class="col-sm-2 col-form-label">
+								Comentario:</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" id="COM_ITEM"
+									placeholder="Comentario" th:field="*{COM_ITEM}" />
+								</div>
+							</div>
+    					</div>
+  					</div>
+    					<div class="col">
+    					</div>
+  					</div>
+  					<div align="center">
+					<button type="submit" class="btn btn-primary">Guardar</button>
+			</div>
+			
+			</form>
+</div>		
+	</section>
 </html>
