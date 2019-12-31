@@ -11,7 +11,7 @@
 <link href="../css/miLayout.css" rel="stylesheet" type="text/css" />
 <link href="../css/font-awesome.min.css" rel="stylesheet"
 	type="text/css" />
-<script src="../../js/bootstrap.min.js" type="text/javascript"></script>
+<script src="../js/bootstrap.min.js" type="text/javascript"></script>
         <script>
             $(document).ready(function(){
                 $('#ejemplo1').DataTable();
@@ -28,7 +28,7 @@
         </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
             </div>
-               <a th:href="@{/persona/login}" class="btn btn-success">SALIR</a>
+                <a th:href="@{/principal/inicio}" class="btn btn-success">MENÚ</a>
         </nav>
 
        <div class="container" style="margin-top: 15px;">
@@ -43,7 +43,7 @@
     <div class="card mb-4 shadow-sm">
       <div class="card-body">
             <img src="../imagenes/personas.png" width="140" height="140">
-        <a th:href="@{/persona/listarTodo}" class="btn btn-lg btn-block btn-outline-primary" style="margin-top: 10px;">Personas</a>
+        <a th:href="@{/tipopersona/listarTodo}" class="btn btn-lg btn-block btn-outline-primary" style="margin-top: 10px;">Personas</a>
       </div>
     </div>
     <div class="card mb-4 shadow-sm">
@@ -54,39 +54,11 @@
     </div>
     <div class="card mb-4 shadow-sm">
       <div class="card-body">
-            <img src="../imagenes/transacciones.png" width="140" height="140">
-        <a th:href="@{/persona/listarTodo}" class="btn btn-lg btn-block btn-outline-primary" style="margin-top: 10px;">Transacciones</a>
+            <img src="../imagenes/articulos.png" width="140" height="140">
+        <a th:href="@{/item/listarTodo}" class="btn btn-lg btn-block btn-outline-primary" style="margin-top: 10px;">Transacciones</a>
       </div>
     </div>
   </div>
-    
-      <div class="card-deck mb-3 text-center">
-    <div class="card mb-4 shadow-sm">
-      <div class="card-body">
-            <img src="../imagenes/proveedores.png" width="140" height="140">
-        <a th:href="@{/persona/listarTodo}" class="btn btn-lg btn-block btn-outline-primary" style="margin-top: 10px;">Proveedores</a>
-      </div>
-    </div>
-    <div class="card mb-4 shadow-sm">
-      <div class="card-body">
-            <img src="../imagenes/orden.png" width="140" height="140">
-        <a th:href="@{/persona/listarTodo}" class="btn btn-lg btn-block btn-outline-primary" style="margin-top: 10px;">Ordenes</a>
-      </div>
-    </div>
-    <div class="card mb-4 shadow-sm">
-      <div class="card-body">
-            <img src="../imagenes/reportes.png" width="140" height="140">
-        <a th:href="@{/persona/listarTodo}" class="btn btn-lg btn-block btn-outline-primary" style="margin-top: 10px;">Reportes</a>
-      </div>
-    </div>
-    <div class="card mb-4 shadow-sm">
-      <div class="card-body">
-            <img src="../imagenes/general.png" width="140" height="140">
-        <a th:href="@{/principal/general}" class="btn btn-lg btn-block btn-outline-primary" style="margin-top: 10px;">General</a>
-      </div>
-    </div>
-  </div>
-   
 
 </div>
         <footer class="mt-auto fixed-bottom p-3">

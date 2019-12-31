@@ -15,7 +15,7 @@ public class GeneralWebController {
 	
 	@RequestMapping("/general")
 	public String General(Model model) {
-		return "/moduloAdministrativo/listaGeneral";
+		return "/moduloAdministrativo/menuadm";
 	}
 	
 
