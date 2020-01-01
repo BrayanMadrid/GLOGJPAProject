@@ -18,5 +18,10 @@ public class GeneralWebController {
 		return "/moduloAdministrativo/menuadm";
 	}
 	
+	@RequestMapping("/proppersonas")
+	public String Proppersonas(Model model) {
+		return "/moduloAdministrativo/listaPropPersonas";
+	}
+	
 
 }
