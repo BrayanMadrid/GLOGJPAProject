@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="../js/jquery-3.4.1.min.js" type="text/javascript"></script>
+<link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="../css/miLogin.css" rel="stylesheet" type="text/css" />
+<link href="../css/miLayout.css" rel="stylesheet" type="text/css" />
+<link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<script src="../js/bootstrap.min.js" type="text/javascript"></script>
+<title>Crear Nueva Clase</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">
+       <img src="../imagenes/Logo.png" width="30" height="30" alt="">
+      Grupo Isamisa</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            </div>
+                <a th:href="@{/propitem/listarTodo}" class="btn btn-success">REGRESAR</a>
+        </nav>
+<br>
+	<section id="seccion1">
+	<div class="container-fluid">
+			<p align="center" style="font-size:20px"><b>Información de Clase</b></p>
+			<form th:action="@{/clase/guardar}"
+				th:object="${clase}" method="post">		
+				<div class="container">
+      						<div class="form-group row">
+								<label for="nombre" class="col-sm-2 col-form-label">Desc: de Clase</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="DESC_CLASE"
+								placeholder="Clase" th:field="*{DESC_CLASE}" />
+							</div>
+							</div>
+    					</div>
+
+			<div align="center">
+					<button type="submit" class="btn btn-primary">Guardar</button>
+			</div>
+			</form>
+		</div>
+	</section>
+</html>
