@@ -29,7 +29,9 @@ public class SubFamiliaItemWebController {
 	@RequestMapping("/nuevo")
 	public String nuevaSubFamiliaItem(Model model) {
 		SubFamiliaItem subfamiliaitem = new SubFamiliaItem();
+		List<FamiliaItem> listFamiliaItem = servicioFamiliaItem.buscarTodo();
 		model.addAttribute("subfamiliaitem", subfamiliaitem);
+		model.addAttribute("familiaitem",listFamiliaItem);
 		return "/moduloAdministrativo/nuevaSubFamiliaItem";
 	}
 	 
