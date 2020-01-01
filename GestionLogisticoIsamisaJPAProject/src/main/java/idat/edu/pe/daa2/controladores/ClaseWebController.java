@@ -9,43 +9,45 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import idat.edu.pe.daa2.jpa.modelo.Unmed;
-import idat.edu.pe.daa2.jpa.servicios.UnmedServicio;
+import idat.edu.pe.daa2.jpa.modelo.Clase;
+import idat.edu.pe.daa2.jpa.servicios.ClaseServicio;
 
 @Controller
-@RequestMapping("/unmed")
-public class UnmedWebController {
+@RequestMapping("/clase")
+public class ClaseWebController {
+	
 	
 	@Autowired
-	private UnmedServicio servicioUnmed;
+	private ClaseServicio servicioClase;
 	
 	@RequestMapping("/nuevo")
-	public String nuevaUnmed(Model model) {
-		Unmed unmed = new Unmed();
-		model.addAttribute("unmed", unmed);
-		return "/moduloAdministrativo/nuevaUnmed";
+	public String nuevaClase(Model model) {
+		Clase clase = new Clase();
+		model.addAttribute("clase", clase);
+		return "/moduloAdministrativo/nuevaClase";
 	}
 	 
 	
 	@RequestMapping(value = "/guardar", method = RequestMethod.POST)
-	public String crearUnmed(@ModelAttribute("unmed") Unmed unmed) {
-		servicioUnmed.crear(unmed);
+	public String crearClase(@ModelAttribute("clase") Clase clase) {
+		servicioClase.crear(clase);
 	    return "redirect:/propitem/listarTodo";
 	}
 	
 	@RequestMapping("/actualizar/{id}")
-	public ModelAndView editarUnmed(@PathVariable(name = "id") int id) {
-	    ModelAndView mav = new ModelAndView("/moduloAdministrativo/editarUnmed");
-	    Unmed unmed = servicioUnmed.buscarPorID(id);
-	    mav.addObject("unmed", unmed);
+	public ModelAndView editarClase(@PathVariable(name = "id") int id) {
+	    ModelAndView mav = new ModelAndView("/moduloAdministrativo/editarClase");
+	    Clase clase = servicioClase.buscarPorID(id);
+	    mav.addObject("clase", clase);
 	     
 	    return mav;
 	}
 	
 	
 	@RequestMapping("/eliminar/{id}")
-	public String eliminarUnmed(@PathVariable(name = "id") int id) {
-		servicioUnmed.borrarPorID(id);;
+	public String eliminarClase
+	(@PathVariable(name = "id") int id) {
+		servicioClase.borrarPorID(id);;
 	    return "redirect:/propitem/listarTodo";       
 	}
 

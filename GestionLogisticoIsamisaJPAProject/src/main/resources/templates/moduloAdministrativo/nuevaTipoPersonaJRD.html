@@ -22,12 +22,12 @@
         </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
             </div>
-                <a th:href="@{/principal/general}" class="btn btn-success">REGRESAR</a>
+                <a th:href="@{/tipopersona/listarTodo}" class="btn btn-success">REGRESAR</a>
         </nav>
 <br>
 	<section id="seccion1">
 	<div class="container-fluid">
-			<p align="center" style="font-size:20px"><b>Información del Tipo de Persona</b></p>
+			<p align="center" style="font-size:20px"><b>Información del Tipo de Persona JRD</b></p>
 			<form th:action="@{/tipopersonaJRD/guardar}"
 				th:object="${tipopersonaJRD}" method="post">		
 				<div class="container">

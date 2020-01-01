@@ -41,7 +41,7 @@ public class TipoPersonaWebController {
 		model.addAttribute("listarTipoPersonaEMP", listarTipoPersonaEMP);
 		model.addAttribute("listarTipoPersonaJRD", listarTipoPersonaJRD);
 		model.addAttribute("listarTipoPersona", listarTipoPersona);
-		return "/moduloAdministrativo/listaGeneral";
+		return "/moduloAdministrativo/listaPropPersonas";
 	}
 	
 	@RequestMapping("/nuevo")
