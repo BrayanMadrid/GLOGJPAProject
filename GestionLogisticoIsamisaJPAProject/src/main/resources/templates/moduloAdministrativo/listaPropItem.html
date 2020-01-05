@@ -193,6 +193,7 @@
 			<thead>
 				<tr>
 				<th>ID</th>
+				<th>FAMILIA</th>
 				<th>SUB. FAMILIA</th>
 				<th>GESTIONAR</th>
 				</tr>
@@ -200,6 +201,7 @@
 			<tbody>
 				<tr th:each="subfamiliaitem: ${listarSubFamiliaItem}">
 				<td th:text="${subfamiliaitem.COD_SUB_FAM_ITEM}">ID</td>
+				<td th:text="${subfamiliaitem.COD_FAM_ITEM}">FAMILIA</td>
 				<td th:text="${subfamiliaitem.DESC_SUB_FAM_ITEM}">SUB. FAMILIA</td>
 				<td> &nbsp;&nbsp;&nbsp; <a
 							th:href="@{/subfamiliaitem/eliminar/{id}(id=${subfamiliaitem.COD_SUB_FAM_ITEM})}"><img
