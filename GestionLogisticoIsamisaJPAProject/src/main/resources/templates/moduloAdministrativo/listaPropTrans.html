@@ -114,8 +114,88 @@
 				</tr>
 			</tbody>
 		</table>
+
+	<div class="row">
+		<div class="col" align="left">
+			<h1>Tipo Documento</h1>
 	</div>
+		<div class="col" align="right">
+			<a th:href="@{/tipodocumento/nuevo}" class="btn btn-success" style="margin-top:10px;">REGISTRAR</a>
+		</div>
+	</div>
+		<table style="width:100%" id="ejemplo1"
+				class="table table-striped table-bordered dt-responsive nowrap">
+			<thead>
+				<tr>
+				<th>ID</th>
+				<th>DESCRIPCION</th>
+				<th>DIRECCION</th>
+				<th>ALMACEN</th>
+				<th>ESTADO</th>
+				<th>GESTIONAR</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="tipodocumento: ${listarTipoDocumento}">
+				<td th:text="${tipodocumento.ID_TIPO_DOC}">ID</td>
+				<td th:text="${tipodocumento.APLICACION}">DESCRIPCION</td>
+				<td th:text="${tipodocumento.NOM_TIPO_DOC}">DIRECCIÓN</td>
+				<td th:text="${tipodocumento.ABR_TIPO_DOC}">ALMACEN</td>
+				<td th:text="${tipodocumento.ESTATUS}">ESTADO</td>
+				<td><a
+							th:href="@{/tipodocumento/actualizar/{id}(id=${tipodocumento.ID_TIPO_DOC})}"><img
+								src="../imagenes/actualizarIcon.png" class="img-fluid"
+								data-toggle="tooltip" data-placement="bottom"
+								title="Actualizar Sub Almacen"></a> &nbsp;&nbsp;&nbsp; <a
+							th:href="@{/tipodocumento/eliminar/{id}(id=${tipodocumento.ID_TIPO_DOC})}"><img
+								src="../imagenes/eliminarIcon.png" class="img-fluid"
+								data-toggle="tooltip" data-placement="bottom"
+							title="Eliminar Sub Almacen"></a></td>
+				</tr>
+			</tbody>
+		</table>
 	
+	<div class="row">
+		<div class="col" align="left">
+			<h1>Tipo Transacción</h1>
+	</div>
+		<div class="col" align="right">
+			<a th:href="@{/tipotransaccion/nuevo}" class="btn btn-success" style="margin-top:10px;">REGISTRAR</a>
+		</div>
+	</div>
+		<table style="width:100%" id="ejemplo1"
+				class="table table-striped table-bordered dt-responsive nowrap">
+			<thead>
+				<tr>
+				<th>ID</th>
+				<th>TIPO DOCUMENTO</th>
+				<th>NOMBRE</th>
+				<th>ABREVIACIÓN</th>
+				<th>ESTADO</th>
+				<th>GESTIONAR</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="tipotransaccion: ${listarTipoTransaccion}">
+				<td th:text="${tipotransaccion.ID_TIPO_TRANS}">ID</td>
+				<td th:text="${tipotransaccion.ID_TIPO_DOC}">DESCRIPCION</td>
+				<td th:text="${tipotransaccion.NOM_TIPO_TRANS}">DIRECCIÓN</td>
+				<td th:text="${tipotransaccion.FLAG_TIPO_TRANS}">ALMACEN</td>
+				<td th:text="${tipotransaccion.ESTATUS}">ESTADO</td>
+				<td><a
+							th:href="@{/tipotransaccion/actualizar/{id}(id=${tipotransaccion.ID_TIPO_TRANS})}"><img
+								src="../imagenes/actualizarIcon.png" class="img-fluid"
+								data-toggle="tooltip" data-placement="bottom"
+								title="Actualizar Tipo Transacción"></a> &nbsp;&nbsp;&nbsp; <a
+							th:href="@{/tipotransaccion/eliminar/{id}(id=${tipotransaccion.ID_TIPO_TRANS})}"><img
+								src="../imagenes/eliminarIcon.png" class="img-fluid"
+								data-toggle="tooltip" data-placement="bottom"
+							title="Eliminar Tipo Transacción"></a></td>
+				</tr>
+			</tbody>
+		</table>
+	
+			</div>
 	</section>
 </body>
 </html>

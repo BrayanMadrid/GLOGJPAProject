@@ -2,15 +2,19 @@ package idat.edu.pe.daa2.jpa.modelo;
 
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -58,6 +62,9 @@ public class Persona implements Serializable {
 	@JoinColumn (name = "ID_TIPO_PERSONA_EMP", referencedColumnName = "ID_TIPO_PERSONA_EMP")
 	@ManyToOne (optional=false)
 	private TipoPersonaEMP ID_TIPO_PERSONA_EMP;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "ID_PERSONA",fetch=FetchType.LAZY)
+	private List<Transaccion> transaccionList;
 	
 	public Persona() {
 		// TODO Auto-generated constructor stub
