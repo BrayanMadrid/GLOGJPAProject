@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,7 +15,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="transaccion")
 public class Transaccion implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -47,25 +51,25 @@ public class Transaccion implements Serializable {
 	@Column (name="ESTATUS")
 	private String ESTATUS;
 	
-	@JoinColumn (name = "ID_RESPONSABLE", referencedColumnName = "ID_PERSONA")
-	@ManyToOne (optional=false)
-	private Persona ID_RESPONSABLE;
-	
-	@JoinColumn (name = "ID_PROVEEDOR", referencedColumnName = "ID_PERSONA")
-	@ManyToOne (optional=false)
-	private Persona ID_PROVEEDOR;
-	
 	@JoinColumn (name = "ID_SUB_ALM", referencedColumnName = "ID_SUB_ALM")
 	@ManyToOne (optional=false)
 	private SubAlmacen ID_SUB_ALM;
 	
-	@JoinColumn (name = "ID_SUB_ALM_DEST", referencedColumnName = "ID_SUB_ALM")
-	@ManyToOne (optional=false)
-	private Persona ID_SUB_ALM_DEST;
-	
 	@JoinColumn (name = "ID_TIPO_TRANS", referencedColumnName = "ID_TIPO_TRANS")
 	@ManyToOne (optional=false)
 	private TipoTransaccion ID_TIPO_TRANS;
+	
+	@JoinColumn (name = "ID_SUB_ALM_DEST", referencedColumnName = "ID_SUB_ALM_DEST")
+	@ManyToOne (optional=false)
+	private SubAlmacen ID_SUB_ALM_DEST;
+	
+	@JoinColumn (name = "ID_RESPONSABLE", referencedColumnName = "ID_RESPONSABLE")
+	@ManyToOne (optional=false)
+	private Persona ID_RESPONSABLE;
+	
+	@JoinColumn (name = "ID_PROVEEDOR", referencedColumnName = "ID_PROVEEDOR")
+	@ManyToOne (optional=false)
+	private Persona ID_PROVEEDOR;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "ID_TRANSACCION",fetch=FetchType.LAZY)
 	private List<DetTransaccion> dettransaccionList;
@@ -75,9 +79,8 @@ public class Transaccion implements Serializable {
 
 	public Transaccion(Integer iD_TRANSACCION, String aPLICACION, String dOC_SERIE, Integer dOC_NO, Date fEC_REG_TRANS,
 			Date fEC_ANL_TRANS, String dOC_GR_REF, String aBR_DOC_COMP_REF, String sER_DOC_COMP_REF,
-			String nO_DOC_COMP_REF, String nO_OC, String eSTATUS, Persona iD_RESPONSABLE, Persona iD_PROVEEDOR,
-			SubAlmacen iD_SUB_ALM, Persona iD_SUB_ALM_DEST, TipoTransaccion iD_TIPO_TRANS) {
-		super();
+			String nO_DOC_COMP_REF, String nO_OC, String eSTATUS, SubAlmacen iD_SUB_ALM, TipoTransaccion iD_TIPO_TRANS,
+			SubAlmacen iD_SUB_ALM_DEST, Persona iD_RESPONSABLE, Persona iD_PROVEEDOR) {
 		ID_TRANSACCION = iD_TRANSACCION;
 		APLICACION = aPLICACION;
 		DOC_SERIE = dOC_SERIE;
@@ -90,12 +93,14 @@ public class Transaccion implements Serializable {
 		NO_DOC_COMP_REF = nO_DOC_COMP_REF;
 		NO_OC = nO_OC;
 		ESTATUS = eSTATUS;
+		ID_SUB_ALM = iD_SUB_ALM;
+		ID_TIPO_TRANS = iD_TIPO_TRANS;
+		ID_SUB_ALM_DEST = iD_SUB_ALM_DEST;
 		ID_RESPONSABLE = iD_RESPONSABLE;
 		ID_PROVEEDOR = iD_PROVEEDOR;
-		ID_SUB_ALM = iD_SUB_ALM;
-		ID_SUB_ALM_DEST = iD_SUB_ALM_DEST;
-		ID_TIPO_TRANS = iD_TIPO_TRANS;
 	}
+
+
 
 	public Integer getID_TRANSACCION() {
 		return ID_TRANSACCION;
@@ -192,6 +197,30 @@ public class Transaccion implements Serializable {
 	public void setESTATUS(String eSTATUS) {
 		ESTATUS = eSTATUS;
 	}
+	
+	public SubAlmacen getID_SUB_ALM() {
+		return ID_SUB_ALM;
+	}
+
+	public void setID_SUB_ALM(SubAlmacen iD_SUB_ALM) {
+		ID_SUB_ALM = iD_SUB_ALM;
+	}
+
+	public TipoTransaccion getID_TIPO_TRANS() {
+		return ID_TIPO_TRANS;
+	}
+
+	public void setID_TIPO_TRANS(TipoTransaccion iD_TIPO_TRANS) {
+		ID_TIPO_TRANS = iD_TIPO_TRANS;
+	}
+
+	public SubAlmacen getID_SUB_ALM_DEST() {
+		return ID_SUB_ALM_DEST;
+	}
+
+	public void setID_SUB_ALM_DEST(SubAlmacen iD_SUB_ALM_DEST) {
+		ID_SUB_ALM_DEST = iD_SUB_ALM_DEST;
+	}
 
 	public Persona getID_RESPONSABLE() {
 		return ID_RESPONSABLE;
@@ -209,30 +238,6 @@ public class Transaccion implements Serializable {
 		ID_PROVEEDOR = iD_PROVEEDOR;
 	}
 
-	public SubAlmacen getID_SUB_ALM() {
-		return ID_SUB_ALM;
-	}
-
-	public void setID_SUB_ALM(SubAlmacen iD_SUB_ALM) {
-		ID_SUB_ALM = iD_SUB_ALM;
-	}
-
-	public Persona getID_SUB_ALM_DEST() {
-		return ID_SUB_ALM_DEST;
-	}
-
-	public void setID_SUB_ALM_DEST(Persona iD_SUB_ALM_DEST) {
-		ID_SUB_ALM_DEST = iD_SUB_ALM_DEST;
-	}
-
-	public TipoTransaccion getID_TIPO_TRANS() {
-		return ID_TIPO_TRANS;
-	}
-
-	public void setID_TIPO_TRANS(TipoTransaccion iD_TIPO_TRANS) {
-		ID_TIPO_TRANS = iD_TIPO_TRANS;
-	}
-
 	public List<DetTransaccion> getDettransaccionList() {
 		return dettransaccionList;
 	}
@@ -240,7 +245,7 @@ public class Transaccion implements Serializable {
 	public void setDettransaccionList(List<DetTransaccion> dettransaccionList) {
 		this.dettransaccionList = dettransaccionList;
 	}
-	
+
 	@Override
     public int hashCode() {
         int hash = 0;
@@ -265,6 +270,7 @@ public class Transaccion implements Serializable {
     public String toString() {
         return "idat.edu.pe.daa2.jpa.modelo.Transaccion[ ID_TRANSACCION=" + ID_TRANSACCION + " ]";
     }
+	
 	
 
 }

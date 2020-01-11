@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script src="../js/jquery-3.4.1.min.js" type="text/javascript"></script>
+<script src="../js/bootstrap.js" type="text/javascript"></script>
+<link href="../css/bootstrap.css" rel="stylesheet" type="text/css" />
+<style>
+	#content{
+		position: absolute;
+		min-height: 50%;
+		width: 80%;
+		top: 20%;
+		left: 5%;
+	}
+
+	.selected{
+		cursor: pointer;
+	}
+	.selected:hover{
+		background-color: #0585C0;
+		color: white;
+	}
+	.seleccionada{
+		background-color: #0585C0;
+		color: white;
+	}
+</style>
+<script>
+	$(document).ready(function(){
+		$('#bt_add').click(function(){
+			agregar();
+		});
+		$('#bt_del').click(function(){
+			eliminar(id_fila_selected);
+		});
+		$('#bt_delall').click(function(){
+			eliminarTodasFilas();
+		});
+		
+
+	});
+	var cont=0;
+	var id_fila_selected=[];
+	function agregar(){
+		cont++;
+		var fila='<tr class="selected" id="fila'+cont+'" onclick="seleccionar(this.id);"><td>'+cont+'</td><td>texto x defecto</td><td>0.00</td></tr>';
+		$('#tabla').append(fila);
+		reordenar();
+	}
+
+	function seleccionar(id_fila){
+		if($('#'+id_fila).hasClass('seleccionada')){
+			$('#'+id_fila).removeClass('seleccionada');
+		}
+		else{
+			$('#'+id_fila).addClass('seleccionada');
+		}
+		//2702id_fila_selected=id_fila;
+		id_fila_selected.push(id_fila);
+	}
+
+	function eliminar(id_fila){
+		/*$('#'+id_fila).remove();
+		reordenar();*/
+		for(var i=0; i<id_fila.length; i++){
+			$('#'+id_fila[i]).remove();
+		}
+		reordenar();
+	}
+
+	function reordenar(){
+		var num=1;
+		$('#tabla tbody tr').each(function(){
+			$(this).find('td').eq(0).text(num);
+			num++;
+		});
+	}
+	function eliminarTodasFilas(){
+$('#tabla tbody tr').each(function(){
+			$(this).remove();
+		});
+
+	}
+
+
+</script>
+</head>
+<body>
+<div id="content">
+		<label>Agregar filas de forma dinámica con JQuery</label>
+		<button id="bt_add" class="btn btn-default">Agregar</button>
+		<button id="bt_del" class="btn btn-default">Eliminar</button>
+		<button id="bt_delall" class="btn btn-default">Eliminar todo</button>
+		<table id="tabla" class="table table-bordered">
+		<thead>
+			<tr>
+				<td>Nº</td>
+				<td>Descripción</td>
+				<td>Precio</td>
+			</tr>
+		</thead>
+	</table>
+	</div>
+</body>
+</html>

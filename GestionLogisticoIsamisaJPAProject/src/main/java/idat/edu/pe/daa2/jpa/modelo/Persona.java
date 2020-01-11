@@ -1,6 +1,5 @@
 package idat.edu.pe.daa2.jpa.modelo;
 
-
 import java.io.Serializable;
 import java.util.List;
 
@@ -201,6 +200,14 @@ public class Persona implements Serializable {
 	public void setID_TIPO_PERSONA_EMP(TipoPersonaEMP iD_TIPO_PERSONA_EMP) {
 		ID_TIPO_PERSONA_EMP = iD_TIPO_PERSONA_EMP;
 	}
+	
+	public List<Transaccion> getTransaccionList() {
+		return transaccionList;
+	}
+
+	public void setTransaccionList(List<Transaccion> transaccionList) {
+		this.transaccionList = transaccionList;
+	}
 
 	@Override
     public int hashCode() {
@@ -229,3 +236,4 @@ public class Persona implements Serializable {
 	
 
 }
+

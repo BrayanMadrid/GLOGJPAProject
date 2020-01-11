@@ -1,15 +1,19 @@
 package idat.edu.pe.daa2.jpa.modelo;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -45,6 +49,9 @@ private static final long serialVersionUID = 1L;
 	@JoinColumn (name = "COD_VAL", referencedColumnName = "COD_VAL")
 	@ManyToOne (optional=false)
 	private Validacion COD_VAL;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "ID_ITEM",fetch=FetchType.LAZY)
+	private List<DetTransaccion> dettransaccionList;
 
 	public Item() {
 	}
@@ -125,6 +132,14 @@ private static final long serialVersionUID = 1L;
 		COD_VAL = cOD_VAL;
 	}
 	
+	public List<DetTransaccion> getDettransaccionList() {
+		return dettransaccionList;
+	}
+
+	public void setDettransaccionList(List<DetTransaccion> dettransaccionList) {
+		this.dettransaccionList = dettransaccionList;
+	}
+
 	@Override
     public int hashCode() {
         int hash = 0;
