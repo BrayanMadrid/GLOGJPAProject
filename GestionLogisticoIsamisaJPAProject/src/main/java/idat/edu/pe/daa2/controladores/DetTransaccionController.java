@@ -3,6 +3,7 @@ package idat.edu.pe.daa2.controladores;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +18,8 @@ import idat.edu.pe.daa2.jpa.servicios.TransaccionServicio;
 import idat.edu.pe.daa2.jpa.servicios.DetTransaccionServicio;
 import idat.edu.pe.daa2.jpa.servicios.ItemServicio;
 
+@Controller
+@RequestMapping("/dettransaccion")
 public class DetTransaccionController {
 	
 	@Autowired

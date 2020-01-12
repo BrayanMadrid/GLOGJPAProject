@@ -25,6 +25,10 @@ private PersonaRepositorio repositorio;
 		return (ArrayList<Persona>) repositorio.findAll();
 	}
 	
+	public List<Persona> buscarPersonaPorTipo(Integer idTipoPersona){
+		return (ArrayList<Persona>) repositorio.filtrarPersonasPorTipo(idTipoPersona);
+	}
+	
 	public Persona crear(Persona persona) {
 		return repositorio.save(persona);
 	}

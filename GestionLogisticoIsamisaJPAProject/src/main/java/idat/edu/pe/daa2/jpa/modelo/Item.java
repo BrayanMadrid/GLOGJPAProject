@@ -50,7 +50,7 @@ private static final long serialVersionUID = 1L;
 	@ManyToOne (optional=false)
 	private Validacion COD_VAL;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "ID_ITEM",fetch=FetchType.LAZY)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "COD_ITEM",fetch=FetchType.LAZY)
 	private List<DetTransaccion> dettransaccionList;
 
 	public Item() {

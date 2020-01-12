@@ -1,20 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script src="../js/jquery-3.4.1.min.js" type="text/javascript"></script>
 <script src="../js/bootstrap.js" type="text/javascript"></script>
 <link href="../css/bootstrap.css" rel="stylesheet" type="text/css" />
 <style>
-	#content{
-		position: absolute;
-		min-height: 50%;
-		width: 80%;
-		top: 20%;
-		left: 5%;
-	}
-
 	.selected{
 		cursor: pointer;
 	}
@@ -45,7 +38,7 @@
 	var id_fila_selected=[];
 	function agregar(){
 		cont++;
-		var fila='<tr class="selected" id="fila'+cont+'" onclick="seleccionar(this.id);"><td>'+cont+'</td><td>texto x defecto</td><td>0.00</td></tr>';
+		var fila='<tr class="selected" id="fila'+cont+'" onclick="seleccionar(this.id);"><td>'+cont+'</td><td><select class="custom-select" th:field="*{COD_ITEM}"> <option th:each="item:${item}" th:value="${item.COD_ITEM}" th:text="${item.DESC_ITEM}" /></select></td><td>0.00</td></tr>';
 		$('#tabla').append(fila);
 		reordenar();
 	}
@@ -86,22 +79,150 @@ $('#tabla tbody tr').each(function(){
 
 
 </script>
+<script> 
+function muestra_oculta(id){
+	if (document.getElementById){ //se obtiene el id
+	var el = document.getElementById(id); //se define la variable "el" igual a nuestro div
+	el.style.display = (el.style.display == 'none') ? 'block' : 'none'; //damos un atributo display:none que oculta el div
+	}
+	}
+	window.onload = function(){/*hace que se cargue la función lo que predetermina que div estará oculto hasta llamar a la función nuevamente*/
+	muestra_oculta('tr');/* "contenido_a_mostrar" es el nombre que le dimos al DIV */
+	}
+</script>
 </head>
 <body>
-<div id="content">
-		<label>Agregar filas de forma din�mica con JQuery</label>
-		<button id="bt_add" class="btn btn-default">Agregar</button>
-		<button id="bt_del" class="btn btn-default">Eliminar</button>
-		<button id="bt_delall" class="btn btn-default">Eliminar todo</button>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand">
+       <img src="../imagenes/Logo.png" width="30" height="30" alt="">
+      Grupo Isamisa (Transacciones)</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            </div>
+               <a th:href="@{/persona/listarTodo}" class="btn btn-success">REGRESAR</a>
+</nav>
+<br>
+<div class="container">
+
+<p align="center" style="font-size:20px"><b>Registro de Transacción</b></p>
+			<br/>
+
+<form th:action="@{/transaccion/guardar}"
+				th:object="${transaccion}" method="post">
+	 <div class="form-row">
+	 <div class="form-group col-md-1">
+      <label for="inputZip">Nro. Serie</label>
+      <input type="text" class="form-control" id="inputZip">
+    </div>
+     <div class="form-group col-md-1">
+      <label for="inputZip">Nro. Doc.</label>
+      <input type="text" class="form-control" id="inputZip">
+    </div>
+    	<div class="form-group col-md-3">
+  				<div class="input-group-prepend">
+    				<label class="input-group-text" for="inputGroupSelect01">Fecha de Registro</label>
+  				</div>
+  					<input type="date" id="start" name="trip-start"
+      			 		    min="2019-01-01" max="2030-12-31">	
+		</div>
+	<div class="col" align="right">
+			<button onClick="muestra_oculta('tr')" type="button" class="btn btn-primary"  style="margin-top:30px;">Transferencia</button>
+	</div>
+    </div>
+  <div class="form-row">
+   			<div class="form-group col-md-3">
+  				<div class="input-group-prepend">
+    				<label class="input-group-text" for="inputGroupSelect01">Tipo de Transacción</label>
+  				</div>
+  					<select class="custom-select" id="inputGroupSelect01" th:field="*{ID_TIPO_TRANS}">
+    					<option th:each="tipotransaccion:${tipotransaccion}"
+						th:value="${tipotransaccion.ID_TIPO_TRANS}"
+						th:text="${tipotransaccion.NOM_TIPO_TRANS}"
+						/>
+  					</select>
+			</div>
+    <div class="form-group col-md-3">
+					<div class="input-group-prepend">
+    								<label class="input-group-text" for="inputGroupSelect01">Aplicación:</label>
+  								</div>
+  							<select class="custom-select" th:field="*{APLICACION}">
+    							<option th:value="'S'" th:text="Adición" selected="selected"></option>
+    							<option th:value="'R'" th:text="Disminución"></option>
+    							<option th:value="'T'" th:text="Transferencia"></option>
+  							</select>
+    </div>
+        <div class="form-group col-md-3">
+  				<div class="input-group-prepend">
+    				<label class="input-group-text" for="inputGroupSelect01">Almacén de Origen</label>
+  				</div>
+  					<select class="custom-select" id="inputGroupSelect01" th:field="*{ID_SUB_ALM}">
+    					<option th:each="subalmacen:${subalmacen}"
+						th:value="${subalmacen.ID_SUB_ALM}"
+						th:text="${subalmacen.NOM_SUB_ALM}"
+						/>
+  				</select>
+	</div>
+		    <div class="form-group col-md-3">
+  				<div class="input-group-prepend">
+    				<label class="input-group-text" for="inputGroupSelect01">Responsable</label>
+  				</div>
+  					<select class="custom-select" id="inputGroupSelect01" th:field="*{ID_RESPONSABLE}">
+    					<option th:each="persona:${persona}"
+						th:value="${persona.ID_PERSONA}"
+						th:text="${persona.NOM1_PERSONA}"
+						/>
+  					</select>
+			</div>
+			<br/>
+  </div>
+  
+  <div id="tr">
+  <p align="center" style="font-size:20px"><b>Datos para Transferencia</b></p>
+			<br/>
+  <div class="form-row">
+   			<div class="form-group col-md-3">
+  				<div class="input-group-prepend">
+    				<label class="input-group-text" for="inputGroupSelect01">Tipo de Transacción</label>
+  				</div>
+  					<select class="custom-select" id="inputGroupSelect01" th:field="*{ID_TIPO_TRANS}">
+    					<option th:each="tipotransaccion:${tipotransaccion}"
+						th:value="${tipotransaccion.ID_TIPO_TRANS}"
+						th:text="${tipotransaccion.NOM_TIPO_TRANS}"
+						/>
+  					</select>
+			</div>
+
+        <div class="form-group col-md-3">
+  				<div class="input-group-prepend">
+    				<label class="input-group-text" for="inputGroupSelect01">Almacén de Destino</label>
+  				</div>
+  					<select class="custom-select" id="inputGroupSelect01" th:field="*{ID_SUB_ALM_DEST}">
+    					<option th:each="subalmacen:${subalmacen}"
+						th:value="${subalmacen.ID_SUB_ALM}"
+						th:text="${subalmacen.NOM_SUB_ALM}"
+						/>
+  				</select>
+	</div>
+	</div>
+	</div>
+		<label>Registrar Transacción</label>
+		<a id="bt_add" class="btn btn-default">Agregar</a>
+		<a id="bt_del" class="btn btn-default">Eliminar</a>
+		<a id="bt_delall" class="btn btn-default">Eliminar todo</a>
 		<table id="tabla" class="table table-bordered">
 		<thead>
 			<tr>
-				<td>N�</td>
-				<td>Descripci�n</td>
-				<td>Precio</td>
+				<td>Linea</td>
+				<td>Item</td>
+				<td>Cantidad</td>
 			</tr>
 		</thead>
 	</table>
+	  
+  <button type="submit" class="btn btn-primary">REGISTRAR</button>
+</form>
 	</div>
 </body>
 </html>

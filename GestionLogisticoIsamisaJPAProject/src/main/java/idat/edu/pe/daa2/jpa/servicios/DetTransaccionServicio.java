@@ -33,7 +33,7 @@ public class DetTransaccionServicio {
 			DetTransaccion dettransaccionActual = repositorioDetTransaccion.findById(dettransaccionActualizar.getID_DET_TRANSACCION()).get();
 			dettransaccionActual.setID_TRANSACCION(dettransaccionActualizar.getID_TRANSACCION());
 			dettransaccionActual.setLINE(dettransaccionActualizar.getLINE());
-			dettransaccionActual.setID_ITEM(dettransaccionActualizar.getID_ITEM());
+			dettransaccionActual.setCOD_ITEM(dettransaccionActualizar.getCOD_ITEM());
 			dettransaccionActual.setCANTIDAD(dettransaccionActualizar.getCANTIDAD());
 			DetTransaccion dettransaccionActualizado = repositorioDetTransaccion.save(dettransaccionActual);
 			return dettransaccionActualizado;

@@ -62,8 +62,11 @@ public class Persona implements Serializable {
 	@ManyToOne (optional=false)
 	private TipoPersonaEMP ID_TIPO_PERSONA_EMP;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "ID_PERSONA",fetch=FetchType.LAZY)
-	private List<Transaccion> transaccionList;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "ID_RESPONSABLE",fetch=FetchType.LAZY)
+	private List<Transaccion> transaccionrList;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "ID_PROVEEDOR",fetch=FetchType.LAZY)
+	private List<Transaccion> transaccionpList;
 	
 	public Persona() {
 		// TODO Auto-generated constructor stub
@@ -200,13 +203,21 @@ public class Persona implements Serializable {
 	public void setID_TIPO_PERSONA_EMP(TipoPersonaEMP iD_TIPO_PERSONA_EMP) {
 		ID_TIPO_PERSONA_EMP = iD_TIPO_PERSONA_EMP;
 	}
-	
-	public List<Transaccion> getTransaccionList() {
-		return transaccionList;
+
+	public List<Transaccion> getTransaccionrList() {
+		return transaccionrList;
 	}
 
-	public void setTransaccionList(List<Transaccion> transaccionList) {
-		this.transaccionList = transaccionList;
+	public void setTransaccionrList(List<Transaccion> transaccionrList) {
+		this.transaccionrList = transaccionrList;
+	}
+
+	public List<Transaccion> getTransaccionpList() {
+		return transaccionpList;
+	}
+
+	public void setTransaccionpList(List<Transaccion> transaccionpList) {
+		this.transaccionpList = transaccionpList;
 	}
 
 	@Override

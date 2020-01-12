@@ -59,15 +59,15 @@ public class Transaccion implements Serializable {
 	@ManyToOne (optional=false)
 	private TipoTransaccion ID_TIPO_TRANS;
 	
-	@JoinColumn (name = "ID_SUB_ALM_DEST", referencedColumnName = "ID_SUB_ALM_DEST")
+	@JoinColumn (name = "ID_SUB_ALM_DEST", referencedColumnName = "ID_SUB_ALM")
 	@ManyToOne (optional=false)
 	private SubAlmacen ID_SUB_ALM_DEST;
 	
-	@JoinColumn (name = "ID_RESPONSABLE", referencedColumnName = "ID_RESPONSABLE")
+	@JoinColumn (name = "ID_RESPONSABLE", referencedColumnName = "ID_PERSONA")
 	@ManyToOne (optional=false)
 	private Persona ID_RESPONSABLE;
 	
-	@JoinColumn (name = "ID_PROVEEDOR", referencedColumnName = "ID_PROVEEDOR")
+	@JoinColumn (name = "ID_PROVEEDOR", referencedColumnName = "ID_PERSONA")
 	@ManyToOne (optional=false)
 	private Persona ID_PROVEEDOR;
 	

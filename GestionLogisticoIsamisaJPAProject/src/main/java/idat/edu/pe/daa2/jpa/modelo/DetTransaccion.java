@@ -33,20 +33,20 @@ public class DetTransaccion implements Serializable {
 	@ManyToOne (optional=false)
 	private Transaccion ID_TRANSACCION;
 	
-	@JoinColumn (name = "ID_ITEM", referencedColumnName = "ID_ITEM")
+	@JoinColumn (name = "COD_ITEM", referencedColumnName = "COD_ITEM")
 	@ManyToOne (optional=false)
-	private Item ID_ITEM;
+	private Item COD_ITEM;
 
 	public DetTransaccion() {
 	}
 
 	public DetTransaccion(Integer iD_DET_TRANSACCION, Integer lINE, Double cANTIDAD, Transaccion iD_TRANSACCION,
-			Item iD_ITEM) {
+			Item cOD_ITEM) {
 		ID_DET_TRANSACCION = iD_DET_TRANSACCION;
 		LINE = lINE;
 		CANTIDAD = cANTIDAD;
 		ID_TRANSACCION = iD_TRANSACCION;
-		ID_ITEM = iD_ITEM;
+		COD_ITEM = cOD_ITEM;
 	}
 
 	public Integer getID_DET_TRANSACCION() {
@@ -81,12 +81,12 @@ public class DetTransaccion implements Serializable {
 		ID_TRANSACCION = iD_TRANSACCION;
 	}
 
-	public Item getID_ITEM() {
-		return ID_ITEM;
+	public Item getCOD_ITEM() {
+		return COD_ITEM;
 	}
 
-	public void setID_ITEM(Item iD_ITEM) {
-		ID_ITEM = iD_ITEM;
+	public void setCOD_ITEM(Item cOD_ITEM) {
+	COD_ITEM = cOD_ITEM;
 	}
 	
 	@Override

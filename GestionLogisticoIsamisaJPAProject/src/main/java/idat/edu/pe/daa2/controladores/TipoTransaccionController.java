@@ -25,6 +25,7 @@ public class TipoTransaccionController {
 	
 	@Autowired
 	private TipoDocumentoServicio servicioTipoDocumento;
+
 	
 	@RequestMapping("/nuevo")
 	public String nuevaTipoTransaccion(Model model) {
